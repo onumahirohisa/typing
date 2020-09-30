@@ -7,20 +7,32 @@
     loc = 0;
   }
 
-  const words = ["red", "blue", "pink"];
+  const words = [
+    "Big Mac",
+    "Gran Clubhouse",
+    "Gran Garlic Pepper",
+    "Chicken Filet-O",
+    "Bacon Lettuce Burger",
+    "PoteNage DAI",
+    "McFry",
+    "Chicken McNuggets 15Pcs",
+    "Coca Cola",
+    "Fanta Melon",
+  ];
 
-  let word;
+  let word = "red";
   let loc = 0;
   let startTime;
-  let isplaying = false;
+  let isPlaying = false;
+
   const target = document.getElementById("target");
 
   document.addEventListener("click", () => {
-    if (isplaying === true) {
+    if (isPlaying === true) {
       return;
     }
 
-    isplaying = true;
+    isPlaying = true;
     startTime = Date.now();
     setWord();
   });
@@ -29,17 +41,18 @@
     if (e.key !== word[loc]) {
       return;
     }
+
     loc++;
+
     target.textContent = "_".repeat(loc) + word.substring(loc);
 
     if (loc === word.length) {
       if (words.length === 0) {
         const elapsedTime = ((Date.now() - startTime) / 1000).toFixed(2);
         const result = document.getElementById("result");
-        result.textContent = `Finish!! ${elapsedTime} seconds!`;
+        result.textContent = `finish!! You are big eater!!! ${elapsedTime} seconds!`;
         return;
       }
-
       setWord();
     }
   });
